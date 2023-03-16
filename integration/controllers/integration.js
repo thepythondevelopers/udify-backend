@@ -28,11 +28,12 @@ exports.createIntegration = async (req,res) =>{
    integration_found = await Integration.findOne({store_api_key:req.body.store_api_key,
     store_api_secret:req.body.store_api_secret,
     domain:req.body.domain,
-    user_id : req.user._id});
-    
+    //user_id : req.user._id
+    });
     if(integration_found!=null){
-        return res.status(401).json({
-            message : "This Shopify Account is already in your Account."
+        return res.status(400).json({
+            //message : "This Shopify Account is already in your Account."
+            message : "This Shopify Account is already in someone's account on udify."
         })
     }             
   store_id = uuidv4();
